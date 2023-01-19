@@ -14,6 +14,7 @@ Houseprice_Clean=Houseprice_Clean %>%
 
 
 #house 
+
 House_town = Houseprice %>%
   filter(county =="LANCASHIRE" | county=="LEICESTERSHIRE") %>% 
   group_by(town,district,county) %>% 
@@ -26,6 +27,7 @@ House_town = Houseprice %>%
 
 
 #Average house prices by district (2019-2021)  BOXPLOT 
+
 House_town %>% 
   group_by(district) %>% 
   ggplot(aes(x = district, y = Average_Price)) +
@@ -40,6 +42,7 @@ House_town %>%
 
 
 # Average house prices by district (2019-2021)  BOXPLOT
+
 Houseprice_Clean %>% 
   group_by(district) %>% 
   ggplot(aes(x = district, y = price)) +
@@ -81,6 +84,7 @@ Houseprice_Clean  %>%
 
 
 # BOXPLOT Average house prices by district (2021)
+
 Houseprice_Clean %>% 
   filter(year == 2021) %>% 
   group_by(district) %>% 
@@ -182,14 +186,7 @@ ggplot(internet,aes(x=AvgDownload,y=district))+
   scale_x_continuous(limits=c(25,70), breaks=seq(25,70,10)) +
   labs(y="district",x="Speeds (Mbits/s)",title="Average download internet speed of lancashire and leicestershire")
 
-OR
 
-
-broadband %>% 
-  group_by(district) %>% 
-  ggplot(aes(x=District, y=AvgDownload)) + 
-  labs(title = "Average download internet speed of Lancashire and Leicestershire", x = "districts", y="Average Download Speed (Mbits/s)") +
-  geom_boxplot(outlier.colour="green") + coord_flip()
 
 # internet speed end 
 
@@ -209,7 +206,8 @@ crime_Data = Crime_Data %>%
 
 
 
-# Robbery by District for 2021 piechart
+# Robbery by District for 2021 pie chart
+
 Robbery_Data = crime_Data   %>% 
   filter(Crime_Type=="Robbery", year == 2021) %>% 
   group_by(town) %>%
@@ -246,9 +244,11 @@ radarchart(data_robbery)
 
 
 
-data2 <- data_robbery                                          # Duplicate example data
-data2 <- tibble::rownames_to_column(data_robbery, "Town") # Apply rownames_to_column
+data2 <- data_robbery  # Duplicate example data
+
+data2 <- tibble::rownames_to_column(data_robbery, "town") # Apply rownames_to_column
 data2  
+
 
 # Graph for crime end
 

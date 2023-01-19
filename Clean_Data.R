@@ -21,7 +21,8 @@ colnames(houseprice_2021) = c("id" , "price", "date", "postCode" , "paon", "saon
 
 
 
-#--------- data from price 2019 to 2021-----------------------------------------------------------------------------------------------------
+# data from price 2019 to 2021
+
 Houseprice = houseprice_2019 %>% 
   add_row(houseprice_2020) %>% 
   add_row(houseprice_2021)
@@ -29,7 +30,7 @@ Houseprice = houseprice_2019 %>%
 
 
 
-#-----data clean of house price--------------------------------------------------------------------------------------------------------------
+# data clean of house price 
 
 CleaningHouseprice = Houseprice%>%
   filter(county =="LANCASHIRE" | county=="LEICESTERSHIRE")%>%
@@ -40,7 +41,8 @@ CleaningHouseprice = Houseprice%>%
 
 
 
-#----- to export---------------------------------------------------------------------------------------------------------------
+# to export house price cleaning
+
 write.csv(CleaningHouseprice, "CleanHousePrice.csv")
 
 
@@ -122,10 +124,11 @@ TOWN=TOWN [!duplicated(TOWN$district),]
 
 
 # to export TOWN
+
 write.csv(TOWN, "TOWN.csv")
 
 
-#house price end 
+ #house price end 
 
 
 
@@ -421,6 +424,7 @@ lSOA  = lSOA %>%
 
 
 #remove duplicate data  of lsoa
+
 lSOA[!duplicated(lSOA), ]
 
 
