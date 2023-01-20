@@ -252,6 +252,49 @@ data2
 
 # Graph for crime end
 
+#school
+
+# Average Attainment8Score by year line graph
+
+schoolData %>% 
+  group_by(year) %>% 
+  summarise(AverageAttainment = mean(Attainment8Score)) %>% 
+  ggplot(aes(x = year, y = AverageAttainment)) +
+  geom_line(size = 1.5, 
+            color = "lightgrey") +
+  geom_text(aes(label = AverageAttainment), 
+            vjust = -0.85) +
+  scale_x_continuous(breaks = 2017:2021) +
+  geom_point(size = 2, 
+             color = "steelblue")+
+  labs(title = "Average Attainment8Score by year")
 
 
 
+
+# Leicestershire year 2017-2021 box plot
+
+schoolData %>% 
+  filter(county == "LEICESTERSHIRE") %>% 
+  summarise(AverageAttainment = mean(Attainment8Score)) %>% 
+  ggplot(aes(x = SchoolName, y = Attainment8Score)) +
+  scale_y_continuous(breaks = seq(0, 80, 5))+
+  geom_boxplot() +
+  coord_flip() +
+  labs(title="2017-2021 Attainment8Score of Schools")
+
+
+
+
+# Lancashire year 2017-2021 box plot
+
+schoolData %>% 
+  filter(county == "LANCASHIRE") %>% 
+  summarise(AverageAttainment = mean(Attainment8Score)) %>% 
+  ggplot(aes(x = SchoolName, y = Attainment8Score)) +
+  scale_y_continuous(breaks = seq(0, 80, 5))+
+  geom_boxplot() +
+  coord_flip() +
+  labs(title="2017-2021 Attainment8Score of Schools")
+
+#school end
